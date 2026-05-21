@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>书道 · 修行录</title>
+
+  <!-- 像素风英文字体：Press Start 2P -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- 中文备用：思源宋体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 粒子效果画布（背景） -->
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="container">
+
+    <!-- ========== 头部：角色信息 ========== -->
+    <header class="player-card">
+      <div class="player-avatar">
+        <div class="avatar-pixel">杜</div>
+      </div>
+      <div class="player-info">
+        <h1 class="player-name" id="player-name">杜哥</h1>
+        <div class="player-level">
+          <span class="level-badge" id="level-badge">Lv.1</span>
+          <span class="level-title" id="level-title">识字人</span>
+        </div>
+        <!-- 经验条 -->
+        <div class="xp-bar-container">
+          <div class="xp-bar-label">
+            <span id="xp-current">0</span> / <span id="xp-next">400</span> XP
+          </div>
+          <div class="xp-bar">
+            <div class="xp-bar-fill" id="xp-bar-fill" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="player-stats">
+          <span>连续修习：<strong id="streak-days">1</strong> 日</span>
+          <span>累计：<strong id="total-days">1</strong> 天</span>
+        </div>
+      </div>
+      <!-- 当前阅读 -->
+      <div class="current-reading">
+        <span class="reading-label">📖 正在阅读</span>
+        <span class="reading-title" id="reading-title">《中国历代政治得失》</span>
+        <span class="reading-author" id="reading-author">钱穆</span>
+        <div class="reading-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+          </div>
+          <span class="progress-text" id="progress-text">0%</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========== 主体：网格布局 ========== -->
+    <main class="main-grid">
+
+      <!-- 七维雷达图 -->
+      <section class="card radar-card">
+        <h2 class="card-title">📊 七维能力</h2>
+        <div class="radar-wrapper">
+          <canvas id="radar-canvas" width="400" height="400"></canvas>
+        </div>
+        <div class="dimension-labels" id="dimension-labels"></div>
+      </section>
+
+      <!-- Boss 地图 -->
+      <section class="card boss-card">
+        <h2 class="card-title">⚔️ 当前副本</h2>
+        <div class="book-title-sm">《中国历代政治得失》</div>
+        <div class="boss-chain" id="boss-chain">
+          <!-- JS动态渲染 -->
+        </div>
+      </section>
+
+      <!-- 书域地图 -->
+      <section class="card domain-card">
+        <h2 class="card-title">🗺️ 书域地图</h2>
+        <div class="domain-grid" id="domain-grid">
+          <!-- JS动态渲染 -->
+        </div>
+      </section>
+
+      <!-- Boss 战记录 -->
+      <section class="card records-card">
+        <h2 class="card-title">📜 战历</h2>
+        <div class="records-list" id="records-list">
+          <!-- JS动态渲染 -->
+        </div>
+      </section>
+
+      <!-- 书架 -->
+      <section class="card shelf-card">
+        <h2 class="card-title">📚 书架</h2>
+        <div class="shelf-summary">
+          共 <strong id="book-total">43</strong> 本 ·
+          在读 <strong id="book-reading">8</strong> ·
+          通关 <strong id="book-done">5</strong>
+        </div>
+        <div class="shelf-plan">
+          <div class="plan-item plan-main">
+            <span class="plan-icon">🔥</span>
+            <span>主修：</span><span id="plan-main">中国历代政治得失</span>
+          </div>
+          <div class="plan-item plan-sub">
+            <span class="plan-icon">📖</span>
+            <span>辅修：</span><span id="plan-sub">乡土中国</span>
+          </div>
+          <div class="plan-item plan-casual">
+            <span class="plan-icon">🌿</span>
+            <span>随缘：</span><span id="plan-casual">控制论导论、毛选·实践论</span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ========== 底部：修习日历 ========== -->
+    <footer class="card calendar-card">
+      <h2 class="card-title">📅 修习日历</h2>
+      <div id="calendar-placeholder">
+        <p style="color: #8b8b8b; text-align: center; padding: 2rem 0;">
+          ⏳ 修习日历将在后续版本上线<br>
+          <small>敬请期待</small>
+        </p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/radar-chart.js"></script>
+</body>
+</html>

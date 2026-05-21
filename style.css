@@ -1,0 +1,517 @@
+/* ==========================================
+   书道系统 — 像素风全局样式
+   配色参考 DESIGN.md
+   ========================================== */
+
+/* ---------- 基础重置 ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Serif SC', 'SimSun', serif;
+  background-color: #0f0f23;
+  color: #e8d5b7;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ---------- 像素字体（仅英文/数字用） ---------- */
+.pixel-font {
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* ---------- 背景粒子画布 ---------- */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none; /* 让点击穿透 */
+}
+
+/* ---------- 容器 ---------- */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ---------- 卡片通用 ---------- */
+.card {
+  background: rgba(22, 33, 62, 0.85);
+  border: 2px solid #2a2a4a;
+  border-radius: 4px;           /* 像素风：小圆角 */
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow:
+    0 0 0 1px #1a1a2e,
+    inset 0 0 20px rgba(0,0,0,0.3);
+}
+
+.card-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #d4a74a;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(212, 167, 74, 0.3);
+}
+
+/* ---------- 头部：角色信息 ---------- */
+.player-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 16px;
+  align-items: start;
+  border-color: #d4a74a;
+  background: rgba(26, 26, 46, 0.9);
+}
+
+/* 头像 */
+.player-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-pixel {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #2a1a1a, #4a2a2a);
+  border: 3px solid #d4a74a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 32px;
+  color: #d4a74a;
+  image-rendering: pixelated;
+  box-shadow: 0 0 16px rgba(212, 167, 74, 0.2);
+}
+
+/* 等级 */
+.player-level {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.level-badge {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  background: #2a1a1a;
+  color: #d4a74a;
+  padding: 4px 8px;
+  border: 1px solid #d4a74a;
+}
+
+.level-title {
+  font-size: 18px;
+  color: #e8d5b7;
+}
+
+/* 经验条 */
+.xp-bar-container {
+  margin-bottom: 8px;
+}
+
+.xp-bar-label {
+  font-size: 12px;
+  color: #b8a88a;
+  margin-bottom: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+}
+
+.xp-bar {
+  height: 16px;
+  background: #1a1a2e;
+  border: 2px solid #2a2a4a;
+  position: relative;
+  overflow: hidden;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #8b6b2a, #d4a74a);
+  transition: width 1s ease;
+  box-shadow: 0 0 10px rgba(212, 167, 74, 0.4);
+}
+
+/* 修习统计 */
+.player-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 12px;
+  color: #8b8b8b;
+}
+
+.player-stats strong {
+  color: #e8d5b7;
+}
+
+/* 当前阅读 */
+.current-reading {
+  text-align: right;
+  max-width: 280px;
+}
+
+.reading-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #d4a74a;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.reading-title {
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+}
+
+.reading-author {
+  font-size: 12px;
+  color: #8b8b8b;
+}
+
+.reading-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12px;
+  background: #1a1a2e;
+  border: 2px solid #2a2a4a;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2d5a3a, #4a8b5a);
+  transition: width 0.8s ease;
+}
+
+.progress-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #4a8b5a;
+  min-width: 40px;
+}
+
+/* ---------- 主网格 ---------- */
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* 雷达图占整行 */
+.radar-card {
+  grid-column: 1 / -1;
+}
+
+.radar-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+#radar-canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.dimension-labels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.dimension-tag {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 4px 8px;
+  border: 1px solid #2a2a4a;
+  background: rgba(26, 26, 46, 0.5);
+}
+
+/* ---------- Boss 链 ---------- */
+.boss-chain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.boss-node {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid #2a2a4a;
+  background: rgba(26, 26, 46, 0.3);
+}
+
+.boss-node .boss-icon {
+  font-size: 18px;
+  width: 28px;
+  text-align: center;
+}
+
+.boss-node .boss-name {
+  flex: 1;
+  font-size: 13px;
+}
+
+.boss-node .boss-status {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+}
+
+.boss-done {
+  border-color: #2d8b4a;
+  background: rgba(45, 139, 74, 0.05);
+}
+
+.boss-done .boss-status {
+  color: #4a8b5a;
+}
+
+.boss-locked {
+  opacity: 0.5;
+}
+
+.boss-locked .boss-status {
+  color: #8b8b8b;
+}
+
+.boss-current {
+  border-color: #d4a74a;
+  background: rgba(212, 167, 74, 0.05);
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #d4a74a; }
+  50% { border-color: #f0d080; }
+}
+
+.book-title-sm {
+  font-size: 12px;
+  color: #8b8b8b;
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+/* ---------- 书域网格 ---------- */
+.domain-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.domain-cell {
+  padding: 12px 8px;
+  text-align: center;
+  border: 2px solid #2a2a4a;
+  background: rgba(26, 26, 46, 0.3);
+  transition: all 0.2s;
+  cursor: default;
+}
+
+.domain-cell:hover {
+  border-color: #d4a74a;
+  transform: translateY(-2px);
+}
+
+.domain-cell .domain-icon {
+  font-size: 24px;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.domain-cell .domain-name {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.domain-cell .domain-status {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #8b8b8b;
+  margin-top: 4px;
+}
+
+.domain-active {
+  border-color: #d4a74a;
+  background: rgba(212, 167, 74, 0.08);
+}
+
+.domain-active .domain-status {
+  color: #d4a74a;
+}
+
+.domain-cleared {
+  border-color: #2d8b4a;
+  background: rgba(45, 139, 74, 0.08);
+}
+
+.domain-cleared .domain-status {
+  color: #4a8b5a;
+}
+
+/* ---------- Boss战记录 ---------- */
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.record-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid #2a2a4a;
+  background: rgba(26, 26, 46, 0.3);
+}
+
+.record-date {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: #8b8b8b;
+  min-width: 70px;
+}
+
+.record-boss {
+  font-size: 13px;
+  flex: 1;
+}
+
+.record-xp {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: #d4a74a;
+  min-width: 50px;
+  text-align: right;
+}
+
+.record-summary {
+  font-size: 11px;
+  color: #8b8b8b;
+}
+
+/* ---------- 书架 ---------- */
+.shelf-summary {
+  font-size: 13px;
+  margin-bottom: 12px;
+  color: #b8a88a;
+}
+
+.shelf-summary strong {
+  color: #d4a74a;
+}
+
+.shelf-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.plan-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.plan-icon {
+  font-size: 16px;
+  width: 24px;
+  text-align: center;
+}
+
+/* ---------- 日历 ---------- */
+.calendar-card {
+  grid-column: 1 / -1;
+}
+
+/* ---------- 响应式 ---------- */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px;
+  }
+
+  .player-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .player-avatar {
+    justify-content: center;
+  }
+
+  .player-stats {
+    justify-content: center;
+  }
+
+  .current-reading {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .reading-progress {
+    justify-content: center;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .domain-grid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .avatar-pixel {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+
+  .level-title {
+    font-size: 16px;
+  }
+}
+
+/* ---------- 滚动条 ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f23;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a4a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a5a;
+}

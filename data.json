@@ -1,0 +1,73 @@
+{
+  "player": {
+    "name": "杜哥",
+    "level": 1,
+    "title": "识字人",
+    "xp": 330,
+    "xpToNext": 400,
+    "totalXp": 330
+  },
+  "stats": {
+    "streakDays": 1,
+    "totalDays": 1,
+    "lastActive": "2026-05-20"
+  },
+  "dimensions": {
+    "文学": 10,
+    "史学": 10,
+    "哲学": 15,
+    "数学": 12,
+    "计算机": 30,
+    "政治": 25,
+    "管理": 18
+  },
+  "currentBook": {
+    "title": "中国历代政治得失",
+    "author": "钱穆",
+    "domain": "文史",
+    "progress": 10,
+    "chapters": [
+      { "name": "序", "status": "done" },
+      { "name": "前言", "status": "done" },
+      { "name": "第一讲·汉代", "status": "locked" },
+      { "name": "第二讲·唐代", "status": "locked" },
+      { "name": "第三讲·宋代", "status": "locked" },
+      { "name": "第四讲·明代", "status": "locked" },
+      { "name": "第五讲·清代", "status": "locked" },
+      { "name": "历代之龙（大Boss）", "status": "locked" }
+    ]
+  },
+  "bossRecords": [
+    {
+      "date": "2026-05-20",
+      "bossName": "序言之兽",
+      "status": "defeated",
+      "xpGain": 150,
+      "summary": "序言之兽 ✅ 理解基本准确，对钱穆的写作意图把握到位"
+    },
+    {
+      "date": "2026-05-20",
+      "bossName": "序言小怪",
+      "status": "defeated",
+      "xpGain": 80,
+      "summary": "序言小怪 ✅ 方向正确，注意区分"主观评价"和"客观分析""
+    },
+    {
+      "date": "2026-05-20",
+      "bossName": "前言小怪",
+      "status": "defeated",
+      "xpGain": 80,
+      "summary": "前言小怪 ✅ 不错，对"制度的动态演变"理解到位"
+    }
+  ],
+  "bookShelf": {
+    "total": 43,
+    "reading": ["中国历代政治得失", "小镇喧嚣", "以利为利", "转型中的地方政府", "沧浪之水", "毛泽东传", "传习录", "西方哲学史讲演录"],
+    "completed": ["置身事内", "实践论", "红星照耀中国", "认知觉醒", "芯片简史"],
+    "plan": {
+      "main": "中国历代政治得失",
+      "sub": "乡土中国",
+      "casual": ["控制论导论", "毛选·实践论"]
+    }
+  }
+}
