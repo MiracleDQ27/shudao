@@ -50,14 +50,14 @@
       "bossName": "序言小怪",
       "status": "defeated",
       "xpGain": 80,
-      "summary": "序言小怪 ✅ 方向正确，注意区分"主观评价"和"客观分析""
+      "summary": "序言小怪 ✅ 方向正确，注意区分「主观评价」和「客观分析」"
     },
     {
       "date": "2026-05-20",
       "bossName": "前言小怪",
       "status": "defeated",
       "xpGain": 80,
-      "summary": "前言小怪 ✅ 不错，对"制度的动态演变"理解到位"
+      "summary": "前言小怪 ✅ 不错，对「制度的动态演变」理解到位"
     }
   ],
   "bookShelf": {
