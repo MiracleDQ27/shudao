@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.innerHTML = `
         <div style="text-align:center;padding:4rem 1rem;color:#8b8b8b;">
           <h2>⚠️ 数据加载失败</h2>
+          <p style="color:#ff6b6b;">${error.message || '未知错误'}</p>
           <p>请确保 data.json 文件存在且格式正确</p>
         </div>
       `;
