@@ -3,10 +3,9 @@ export function renderCharacter(player, xpToNext) {
   if (!el) return;
   const progress = xpToNext > 0 ? Math.min(player.xp / xpToNext * 100, 100) : 0;
   el.innerHTML = `
-    <div class="section-title">— 人物 —</div>
+    <div class="section-title">人物</div>
     <div class="char-avatar-row">
       <div class="char-avatar">
-        <div class="char-avatar-ring"></div>
         <span class="char-avatar-text">${player.name[0]}</span>
       </div>
       <div class="char-info">
@@ -35,7 +34,7 @@ export function renderDimList(dimensions) {
     '政道': 'var(--zheng)', '世道': 'var(--shi2)', '心道': 'var(--xin)', '器道': 'var(--qi)'
   };
   el.innerHTML = `
-    <div class="section-title">— 灵根 · 道基 —</div>
+    <div class="section-title">灵根 · 道基</div>
     <div class="dim-list">
       ${Object.entries(dimensions).map(([name, dim]) => `
         <div class="dim-item" style="border-left-color:${dimColors[name] || 'var(--gold)'}">
@@ -52,7 +51,7 @@ export function renderDungeon(bossHistory) {
   if (!el) return;
   if (!bossHistory || bossHistory.length === 0) {
     el.innerHTML = `
-      <div class="section-title">— 副本 · 战历 —</div>
+      <div class="section-title">副本 · 战历</div>
       <div class="empty-state">
         <div class="icon" style="font-size:24px">⚔</div>
         <div class="text">尚无战历</div>
@@ -66,7 +65,6 @@ export function renderDungeon(bossHistory) {
     `;
     return;
   }
-  // TODO: render boss history list when data exists
 }
 
 export function renderInsights(knowledgePoints) {
@@ -74,9 +72,8 @@ export function renderInsights(knowledgePoints) {
   if (!el) return;
   const count = knowledgePoints?.length || 0;
   el.innerHTML = `
-    <div class="section-title">— 感悟 · 道藏 —</div>
+    <div class="section-title">感悟 · 道藏</div>
     <div class="empty-state" style="padding:10px 0">
-      <div class="icon" style="font-size:18px">☯</div>
       <div class="text">${count > 0 ? `${count} 条感悟` : '尚无感悟'}</div>
     </div>
     <div class="insight-card">
@@ -94,7 +91,7 @@ export function renderStats(stats, multiplier, totalXp) {
   if (!el) return;
   const hours = Math.floor((stats.totalReadingMinutes || 0) / 60);
   el.innerHTML = `
-    <div class="section-title">— 修习 · 统计 —</div>
+    <div class="section-title">修习 · 统计</div>
     <div class="stats-list">
       <div class="stat-row"><span>修习天数</span><span>${stats.totalDays || 0} 日</span></div>
       <div class="stat-row"><span>当前连续</span><span>${stats.streakDays || 0} 日</span></div>
