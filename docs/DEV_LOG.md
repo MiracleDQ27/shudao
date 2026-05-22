@@ -151,10 +151,51 @@
 - 用户提出复习触发机制（融入 Boss 体系）
 
 ### 当前状态
-系统设计定稿。Phase 2：页面可视化设计。
+系统设计定稿。data.json v2 Schema 已设计，待写入。
 
 ### 待完成
-- [ ] 页面可视化设计（brainstorming 继续）
-- [ ] data.json 按新系统重构
+- [ ] data.json 按新 Schema 重构写入
+- [ ] 页面可视化设计
 - [ ] Claude 结算脚本
 - [ ] 首次同步验证
+
+---
+
+## 2026-05-22（续1）— 全局漏洞梳理 + data.json v2 + API 摸查
+
+### 全局漏洞梳理
+- 列出 15 项漏洞，按阻断/重要/优化/待探索四级分类
+- 阻断：data.json 未重构、weread-skills 能力未摸清、IMA 指令未验证
+- 重要：结算脚本为零、数据流未跑通、IMA 解析容错、结算触发方式
+- 优化/待探索：Git 安全、旧数据迁移、章 Boss 触发、原子性等
+
+### data.json v2 Schema 设计
+- [x] 8 区块定稿：schemaVersion / lastSync / player / dimensions / stats / bossHistory / bookShelf / knowledgePoints / rules
+- [x] rules 集中管理：levelTable(60级) / dimensionTiers(10段) / streakBonuses / difficultyMultipliers
+- [x] bookShelf 每本书加 domain + difficulty 字段
+- [x] stats 补 totalSessions + totalReadingMinutes
+- [x] RPG 隐喻映射：世界地图=7书域 / 副本=书 / 角色属性=七道值
+
+### weread-skills API 能力摸查
+- [x] 完整读取 SKILL.md + readdata.md + shelf.md + book.md + notes.md + review.md
+- [x] 可直接获取：书架、进度(0-100)、累计时长(秒)、章节目录、阅读天数、分类偏好
+- [x] 需推导：连续修习天数(dailyReadTimes反推)、阅读增量(存上次累计值算delta)
+- [x] 没有：理解评分(IMA提供)、书域分类(Claude判定)
+
+### IMA 指令部署验证
+- [x] IMA 凭证确认（环境变量已配）
+- [x] "书道"笔记本存在，3 篇笔记
+- [x] 最新指令生成的笔记格式验证通过：6 字段完整，书域甚至更优（主/副维标注）
+- [x] IMA → Claude 数据管道确认可用
+
+### Git 状态清理
+- [x] 3 commits：清理旧代码 → 文档更新 → 骨架替换
+- [x] 仓库干净，仅剩 .superpowers/ 和 ref/ 未跟踪
+
+### 用户反馈
+- 用户要求使用 brainstorming skill 流程
+- 用户选择 C：先梳理全局漏洞再分工
+- IMA 指令部署验证：用户 10 分钟前部署，记的是 5/20 的读书记录
+
+### 当前状态
+漏洞清单 1-3 项已关闭。下一步：按新 Schema 重构 data.json。
