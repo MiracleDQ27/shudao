@@ -325,3 +325,55 @@ body {
 .col-right .panel-card:nth-child(3) { animation-delay: 0.65s; }
 
 @keyframes cardIn { 0% { opacity: 0; transform: translateY(12px); } 100% { opacity: 1; transform: translateY(0); } }
+
+/* ========== 手机竖屏适配 ========== */
+
+@media (max-width: 768px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 12px 0;
+  }
+  .painting-content {
+    padding: 0 12px;
+  }
+  .panel-card {
+    padding: 14px;
+    margin-bottom: 12px;
+  }
+  .scroll-topbar {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px 0 10px;
+  }
+  .topbar-title {
+    display: none;
+  }
+  .topbar-right {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .char-avatar {
+    width: 60px;
+    height: 60px;
+  }
+  .char-avatar-text {
+    font-size: 24px;
+  }
+  .char-name {
+    font-size: 18px;
+  }
+  .dim-item {
+    padding: 10px 10px;
+  }
+  .radar-svg {
+    max-width: 100%;
+  }
+  .map-ink {
+    width: 100%;
+  }
+  .painting-bg svg {
+    width: 160%;
+    height: 60%;
+  }
+}
