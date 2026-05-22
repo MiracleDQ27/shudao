@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
-  "lastSync": null,
+  "lastSync": "2026-05-22T15:04:29.859Z",
   "player": {
     "name": "杜哥",
     "level": 1,
     "title": "识文童子",
     "realm": "开蒙",
-    "xp": 0,
-    "totalXp": 0
+    "xp": 50,
+    "totalXp": 50
   },
   "dimensions": {
     "文道": {
@@ -15,7 +15,7 @@
       "tier": "未入门"
     },
     "史道": {
-      "points": 0,
+      "points": 21,
       "tier": "未入门"
     },
     "哲道": {
@@ -23,7 +23,7 @@
       "tier": "未入门"
     },
     "政道": {
-      "points": 0,
+      "points": 6,
       "tier": "未入门"
     },
     "世道": {
@@ -40,19 +40,34 @@
     }
   },
   "stats": {
-    "streakDays": 0,
-    "totalDays": 0,
+    "streakDays": 1,
+    "totalDays": 103,
     "totalSessions": 0,
-    "totalReadingMinutes": 0,
+    "totalReadingMinutes": 3016,
     "lastActive": null
   },
   "bossHistory": [],
   "bookShelf": {
-    "reading": [],
+    "reading": [
+      {
+        "bookId": "23523072",
+        "title": "中国历代政治得失",
+        "author": "钱穆",
+        "cover": "https://cdn.weread.qq.com/weread/cover/54/yuewen_23523072/t6_yuewen_235230721689681600.jpg",
+        "mainDim": "史道",
+        "subDim": "政道",
+        "difficulty": 2,
+        "lastKnownChapterUid": 39,
+        "lastKnownProgress": 6
+      }
+    ],
     "completed": [],
     "plan": []
   },
   "knowledgePoints": [],
+  "processedNoteIds": [
+    "7463579733199491"
+  ],
   "rules": {
     "domains": [
       {

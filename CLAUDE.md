@@ -15,7 +15,7 @@
 
 **边界**：目前单人使用，后续再考虑多人。
 
-> 当前状态：系统设计定稿（DESIGN.md），待页面可视化设计。
+> 当前状态：结算管道施工中（Phase 4），见 SETTLEMENT.md。
 
 ## 已安装 Skills
 
@@ -61,10 +61,18 @@
 | 文件 | 内容 |
 |------|------|
 | [DESIGN.md](docs/DESIGN.md) | 系统设计（等级、七维、Boss、复习、IMA 对接） |
+| [SETTLEMENT.md](docs/SETTLEMENT.md) | 结算操作手册（"同步书道"执行流程） |
 | [REQUIREMENTS.md](docs/REQUIREMENTS.md) | 需求文档 |
 | [TECH_STACK.md](docs/TECH_STACK.md) | 技术架构 |
 | [ROADMAP.md](docs/ROADMAP.md) | 路线图 |
 | [DEV_LOG.md](docs/DEV_LOG.md) | 开发日志 |
+
+## 命令注册
+
+### 同步书道
+执行完整结算流程，按 `docs/SETTLEMENT.md` 操作手册逐步执行。
+涉及工具：weread-skills（拉微信读书）、ima-skill（拉 IMA 笔记）、scripts/settle.js（计算引擎）。
+幂等性保障：processedNoteIds 防重复处理。
 
 ## 目录结构
 
@@ -72,7 +80,9 @@
 /
 ├── index.html          # 极简骨架（等待页面设计）
 ├── ref/                # 设计参考截图
-├── data.json           # 游戏数据（唯一数据源，待按新系统重构）
+├── data.json           # 游戏数据（唯一数据源）
+├── scripts/
+│   └── settle.js       # 结算计算引擎
 ├── docs/
 │   ├── DESIGN.md       # 系统设计
 │   ├── REQUIREMENTS.md # 需求
