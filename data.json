@@ -1,73 +1,578 @@
 {
+  "schemaVersion": 2,
+  "lastSync": null,
   "player": {
     "name": "杜哥",
     "level": 1,
-    "title": "识字人",
-    "xp": 330,
-    "xpToNext": 400,
-    "totalXp": 330
-  },
-  "stats": {
-    "streakDays": 1,
-    "totalDays": 1,
-    "lastActive": "2026-05-20"
+    "title": "识文童子",
+    "realm": "开蒙",
+    "xp": 0,
+    "totalXp": 0
   },
   "dimensions": {
-    "文学": 10,
-    "史学": 10,
-    "哲学": 15,
-    "数学": 12,
-    "计算机": 30,
-    "政治": 25,
-    "管理": 18
-  },
-  "currentBook": {
-    "title": "中国历代政治得失",
-    "author": "钱穆",
-    "domain": "文史",
-    "progress": 10,
-    "chapters": [
-      { "name": "序", "status": "done" },
-      { "name": "前言", "status": "done" },
-      { "name": "第一讲·汉代", "status": "locked" },
-      { "name": "第二讲·唐代", "status": "locked" },
-      { "name": "第三讲·宋代", "status": "locked" },
-      { "name": "第四讲·明代", "status": "locked" },
-      { "name": "第五讲·清代", "status": "locked" },
-      { "name": "历代之龙（大Boss）", "status": "locked" }
-    ]
-  },
-  "bossRecords": [
-    {
-      "date": "2026-05-20",
-      "bossName": "序言之兽",
-      "status": "defeated",
-      "xpGain": 150,
-      "summary": "序言之兽 ✅ 理解基本准确，对钱穆的写作意图把握到位"
+    "文道": {
+      "points": 0,
+      "tier": "未入门"
     },
-    {
-      "date": "2026-05-20",
-      "bossName": "序言小怪",
-      "status": "defeated",
-      "xpGain": 80,
-      "summary": "序言小怪 ✅ 方向正确，注意区分「主观评价」和「客观分析」"
+    "史道": {
+      "points": 0,
+      "tier": "未入门"
     },
-    {
-      "date": "2026-05-20",
-      "bossName": "前言小怪",
-      "status": "defeated",
-      "xpGain": 80,
-      "summary": "前言小怪 ✅ 不错，对「制度的动态演变」理解到位"
+    "哲道": {
+      "points": 0,
+      "tier": "未入门"
+    },
+    "政道": {
+      "points": 0,
+      "tier": "未入门"
+    },
+    "世道": {
+      "points": 0,
+      "tier": "未入门"
+    },
+    "心道": {
+      "points": 0,
+      "tier": "未入门"
+    },
+    "器道": {
+      "points": 0,
+      "tier": "未入门"
     }
-  ],
+  },
+  "stats": {
+    "streakDays": 0,
+    "totalDays": 0,
+    "totalSessions": 0,
+    "totalReadingMinutes": 0,
+    "lastActive": null
+  },
+  "bossHistory": [],
   "bookShelf": {
-    "total": 43,
-    "reading": ["中国历代政治得失", "小镇喧嚣", "以利为利", "转型中的地方政府", "沧浪之水", "毛泽东传", "传习录", "西方哲学史讲演录"],
-    "completed": ["置身事内", "实践论", "红星照耀中国", "认知觉醒", "芯片简史"],
-    "plan": {
-      "main": "中国历代政治得失",
-      "sub": "乡土中国",
-      "casual": ["控制论导论", "毛选·实践论"]
-    }
+    "reading": [],
+    "completed": [],
+    "plan": []
+  },
+  "knowledgePoints": [],
+  "rules": {
+    "domains": [
+      {
+        "id": "文道",
+        "name": "文域",
+        "desc": "文学、写作、艺术、诗歌、小说"
+      },
+      {
+        "id": "史道",
+        "name": "史域",
+        "desc": "历史、传记、文明演进、考古"
+      },
+      {
+        "id": "哲道",
+        "name": "哲域",
+        "desc": "哲学、思想、伦理、宗教、逻辑"
+      },
+      {
+        "id": "政道",
+        "name": "政域",
+        "desc": "政治、制度、法律、治理、权力"
+      },
+      {
+        "id": "世道",
+        "name": "世域",
+        "desc": "经济、社会、商业、民生、人类学"
+      },
+      {
+        "id": "心道",
+        "name": "心域",
+        "desc": "心理、认知、自我成长、教育"
+      },
+      {
+        "id": "器道",
+        "name": "器域",
+        "desc": "科技、数理、工程、计算机、工具"
+      }
+    ],
+    "levelTable": [
+      {
+        "level": 1,
+        "title": "识文童子",
+        "realm": "开蒙",
+        "xpToNext": 300
+      },
+      {
+        "level": 2,
+        "title": "诵经学徒",
+        "realm": "开蒙",
+        "xpToNext": 316
+      },
+      {
+        "level": 3,
+        "title": "临帖弟子",
+        "realm": "开蒙",
+        "xpToNext": 333
+      },
+      {
+        "level": 4,
+        "title": "断句行者",
+        "realm": "开蒙",
+        "xpToNext": 352
+      },
+      {
+        "level": 5,
+        "title": "墨池书生",
+        "realm": "开蒙",
+        "xpToNext": 372
+      },
+      {
+        "level": 6,
+        "title": "解义散人",
+        "realm": "开蒙",
+        "xpToNext": 394
+      },
+      {
+        "level": 7,
+        "title": "明理修士",
+        "realm": "开蒙",
+        "xpToNext": 417
+      },
+      {
+        "level": 8,
+        "title": "贯通道人",
+        "realm": "开蒙",
+        "xpToNext": 443
+      },
+      {
+        "level": 9,
+        "title": "博览真人",
+        "realm": "开蒙",
+        "xpToNext": 470
+      },
+      {
+        "level": 10,
+        "title": "初悟书道",
+        "realm": "开蒙",
+        "xpToNext": 500
+      },
+      {
+        "level": 11,
+        "title": "书香筑基",
+        "realm": "筑基",
+        "xpToNext": 532
+      },
+      {
+        "level": 12,
+        "title": "墨海练气",
+        "realm": "筑基",
+        "xpToNext": 566
+      },
+      {
+        "level": 13,
+        "title": "文山开光",
+        "realm": "筑基",
+        "xpToNext": 604
+      },
+      {
+        "level": 14,
+        "title": "善思融会",
+        "realm": "筑基",
+        "xpToNext": 644
+      },
+      {
+        "level": 15,
+        "title": "辨析破障",
+        "realm": "筑基",
+        "xpToNext": 687
+      },
+      {
+        "level": 16,
+        "title": "明辨贯通",
+        "realm": "筑基",
+        "xpToNext": 734
+      },
+      {
+        "level": 17,
+        "title": "慎思凝神",
+        "realm": "筑基",
+        "xpToNext": 785
+      },
+      {
+        "level": 18,
+        "title": "审问心动",
+        "realm": "筑基",
+        "xpToNext": 840
+      },
+      {
+        "level": 19,
+        "title": "博学金丹",
+        "realm": "筑基",
+        "xpToNext": 899
+      },
+      {
+        "level": 20,
+        "title": "笃行元婴",
+        "realm": "筑基",
+        "xpToNext": 963
+      },
+      {
+        "level": 21,
+        "title": "格物真传",
+        "realm": "结丹",
+        "xpToNext": 1032
+      },
+      {
+        "level": 22,
+        "title": "致知上人",
+        "realm": "结丹",
+        "xpToNext": 1107
+      },
+      {
+        "level": 23,
+        "title": "诚意散仙",
+        "realm": "结丹",
+        "xpToNext": 1187
+      },
+      {
+        "level": 24,
+        "title": "正心丹师",
+        "realm": "结丹",
+        "xpToNext": 1274
+      },
+      {
+        "level": 25,
+        "title": "修身真君",
+        "realm": "结丹",
+        "xpToNext": 1368
+      },
+      {
+        "level": 26,
+        "title": "齐家道君",
+        "realm": "结丹",
+        "xpToNext": 1470
+      },
+      {
+        "level": 27,
+        "title": "治世元君",
+        "realm": "结丹",
+        "xpToNext": 1579
+      },
+      {
+        "level": 28,
+        "title": "通儒地仙",
+        "realm": "结丹",
+        "xpToNext": 1698
+      },
+      {
+        "level": 29,
+        "title": "硕儒天仙",
+        "realm": "结丹",
+        "xpToNext": 1825
+      },
+      {
+        "level": 30,
+        "title": "大儒金仙",
+        "realm": "结丹",
+        "xpToNext": 1963
+      },
+      {
+        "level": 31,
+        "title": "著书灵君",
+        "realm": "立言",
+        "xpToNext": 2113
+      },
+      {
+        "level": 32,
+        "title": "立说玄君",
+        "realm": "立言",
+        "xpToNext": 2274
+      },
+      {
+        "level": 33,
+        "title": "传道星君",
+        "realm": "立言",
+        "xpToNext": 2447
+      },
+      {
+        "level": 34,
+        "title": "授业帝君",
+        "realm": "立言",
+        "xpToNext": 2635
+      },
+      {
+        "level": 35,
+        "title": "解惑仙君",
+        "realm": "立言",
+        "xpToNext": 2838
+      },
+      {
+        "level": 36,
+        "title": "开宗道君",
+        "realm": "立言",
+        "xpToNext": 3057
+      },
+      {
+        "level": 37,
+        "title": "立派老祖",
+        "realm": "立言",
+        "xpToNext": 3294
+      },
+      {
+        "level": 38,
+        "title": "书道宗师",
+        "realm": "立言",
+        "xpToNext": 3549
+      },
+      {
+        "level": 39,
+        "title": "文脉至尊",
+        "realm": "立言",
+        "xpToNext": 3825
+      },
+      {
+        "level": 40,
+        "title": "儒道圣人",
+        "realm": "立言",
+        "xpToNext": 4123
+      },
+      {
+        "level": 41,
+        "title": "书灵真仙",
+        "realm": "化神",
+        "xpToNext": 4445
+      },
+      {
+        "level": 42,
+        "title": "书魂玄仙",
+        "realm": "化神",
+        "xpToNext": 4792
+      },
+      {
+        "level": 43,
+        "title": "墨韵仙王",
+        "realm": "化神",
+        "xpToNext": 5168
+      },
+      {
+        "level": 44,
+        "title": "文气仙帝",
+        "realm": "化神",
+        "xpToNext": 5573
+      },
+      {
+        "level": 45,
+        "title": "万卷神君",
+        "realm": "化神",
+        "xpToNext": 6011
+      },
+      {
+        "level": 46,
+        "title": "文曲星君",
+        "realm": "化神",
+        "xpToNext": 6484
+      },
+      {
+        "level": 47,
+        "title": "文昌帝君",
+        "realm": "化神",
+        "xpToNext": 6995
+      },
+      {
+        "level": 48,
+        "title": "仓颉传人",
+        "realm": "化神",
+        "xpToNext": 7546
+      },
+      {
+        "level": 49,
+        "title": "文明道君",
+        "realm": "化神",
+        "xpToNext": 8142
+      },
+      {
+        "level": 50,
+        "title": "道统圣君",
+        "realm": "化神",
+        "xpToNext": 8785
+      },
+      {
+        "level": 51,
+        "title": "知行天尊",
+        "realm": "合道",
+        "xpToNext": 9480
+      },
+      {
+        "level": 52,
+        "title": "天人至尊",
+        "realm": "合道",
+        "xpToNext": 10231
+      },
+      {
+        "level": 53,
+        "title": "万法归宗",
+        "realm": "合道",
+        "xpToNext": 11041
+      },
+      {
+        "level": 54,
+        "title": "书中仙尊",
+        "realm": "合道",
+        "xpToNext": 11917
+      },
+      {
+        "level": 55,
+        "title": "文道主宰",
+        "realm": "合道",
+        "xpToNext": 12862
+      },
+      {
+        "level": 56,
+        "title": "书道神君",
+        "realm": "合道",
+        "xpToNext": 13883
+      },
+      {
+        "level": 57,
+        "title": "大道至简",
+        "realm": "合道",
+        "xpToNext": 14985
+      },
+      {
+        "level": 58,
+        "title": "书道无极",
+        "realm": "合道",
+        "xpToNext": 16176
+      },
+      {
+        "level": 59,
+        "title": "文以载道",
+        "realm": "合道",
+        "xpToNext": 17462
+      },
+      {
+        "level": 60,
+        "title": "书道永恒",
+        "realm": "合道",
+        "xpToNext": 18851
+      }
+    ],
+    "dimensionTiers": [
+      {
+        "tier": 0,
+        "name": "未入门",
+        "pointsRequired": 0
+      },
+      {
+        "tier": 1,
+        "name": "初窥门径",
+        "pointsRequired": 50
+      },
+      {
+        "tier": 2,
+        "name": "略知一二",
+        "pointsRequired": 120
+      },
+      {
+        "tier": 3,
+        "name": "登堂入室",
+        "pointsRequired": 250
+      },
+      {
+        "tier": 4,
+        "name": "融会贯通",
+        "pointsRequired": 500
+      },
+      {
+        "tier": 5,
+        "name": "炉火纯青",
+        "pointsRequired": 1000
+      },
+      {
+        "tier": 6,
+        "name": "出神入化",
+        "pointsRequired": 2000
+      },
+      {
+        "tier": 7,
+        "name": "开宗立派",
+        "pointsRequired": 4000
+      },
+      {
+        "tier": 8,
+        "name": "一代宗师",
+        "pointsRequired": 8000
+      },
+      {
+        "tier": 9,
+        "name": "道法自然",
+        "pointsRequired": 16000
+      },
+      {
+        "tier": 10,
+        "name": "此道通天",
+        "pointsRequired": 32000
+      }
+    ],
+    "streakBonuses": [
+      {
+        "minDays": 1,
+        "maxDays": 2,
+        "multiplier": 1
+      },
+      {
+        "minDays": 3,
+        "maxDays": 6,
+        "multiplier": 1.2
+      },
+      {
+        "minDays": 7,
+        "maxDays": 13,
+        "multiplier": 1.5
+      },
+      {
+        "minDays": 14,
+        "maxDays": 29,
+        "multiplier": 2
+      },
+      {
+        "minDays": 30,
+        "maxDays": 59,
+        "multiplier": 2.5
+      },
+      {
+        "minDays": 60,
+        "maxDays": 99,
+        "multiplier": 3
+      },
+      {
+        "minDays": 100,
+        "maxDays": null,
+        "multiplier": 4
+      }
+    ],
+    "difficultyMultipliers": [
+      {
+        "level": 1,
+        "label": "通俗读物",
+        "multiplier": 0.7
+      },
+      {
+        "level": 2,
+        "label": "一般社科",
+        "multiplier": 1
+      },
+      {
+        "level": 3,
+        "label": "严肃学术",
+        "multiplier": 1.3
+      },
+      {
+        "level": 4,
+        "label": "经典原著",
+        "multiplier": 1.6
+      },
+      {
+        "level": 5,
+        "label": "大部头巨著",
+        "multiplier": 2
+      }
+    ]
   }
 }
