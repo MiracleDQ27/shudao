@@ -1,74 +1,49 @@
 # 技术架构
 
-> 技术选型、架构决策和文件结构
-
-## 架构概览
-
-```
-手机端                         电脑端                         网页端
-IMA DeepSeek ──IMA API──→  Claude Code ──写文件──→  纯静态页面
-  (反馈/记录)              (数据同步)              (GitHub Pages)
-                                  ↑
-                          微信读书 API
-                          (自动检测进度)
-```
-
 ## 技术选型
 
-| 层面 | 选型 | 理由 |
+| 层面 | 选型 | 说明 |
 |------|------|------|
-| 前端框架 | 无（纯 HTML + CSS + JS） | 零依赖，直接部署，改起来简单 |
-| 数据存储 | data.json（本地文件） | 单文件，我直接读写 |
-| 托管 | GitHub Pages | 免费、支持 HTTPS、手机可访问 |
-| 字体 | Press Start 2P（Google Fonts） | 像素风 |
-| 雷达图 | Canvas 自绘 | 不需要第三方库，灵活可控 |
-| 粒子效果 | 独立 JS 文件 | 后期可换第三方库 |
+| 前端框架 | 原生 HTML/CSS/JS + Three.js | 3D 可视化（地球仪/雷达图） |
+| 3D 引擎 | Three.js v0.160 CDN | import map 方式加载 |
+| 字体 | Noto Serif SC + Press Start 2P | 中文衬线 + 像素风英文 |
+| 数据存储 | data.json | Claude 定期写入 |
+| 托管 | GitHub Pages | 静态站点 |
+| 数据源 1 | 微信读书 (weread-skills) | 官方 Agent API，2026.5.16 发布 |
+| 数据源 2 | IMA DeepSeek (ima-skill) | IMA OpenAPI，笔记读写 |
 
-## 为什么不用框架
-
-纯 HTML/CSS/JS 对这个项目更合适：
-1. 没有构建步骤，本地双击就能打开
-2. 部署到 GitHub Pages 不需要配置
-3. 数据层（data.json）和渲染层分离，以后要换框架只换渲染层
-
-## data.json 数据流
+## 数据流
 
 ```
-IMA DeepSeek → 写 IMA 笔记（固定格式）
-                    ↓
-Claude Code → 读 IMA API → 解析 → 写入 data.json
-                    ↓
-网页端 → fetch('data.json') → 渲染 DOM
+微信读书 API ──→ 阅读进度、时长、天数
+IMA 笔记 ──────→ 理解评分、书域、复习
+        ↘         ↙
+      Claude 结算引擎
+           ↓
+        data.json
+           ↓
+      网页可视化
 ```
 
 ## 目录结构
 
 ```
 /
-├── index.html          # 主页面
-├── style.css           # 全局样式
-├── data.json           # 游戏数据（由 Claude 更新）
-├── js/
-│   ├── main.js         # 页面初始化 + 数据加载
-│   ├── radar-chart.js  # 七维雷达图 Canvas 绘制
-│   ├── particles.js    # 粒子效果
-│   ├── pixel-map.js    # 书域地图
-│   └── boss-records.js # Boss 战记录模块
-├── css/
-│   └── (后续拆分)
+├── index.html          # 前端页面（待设计）
+├── data.json           # 游戏数据
+├── ref/                # 设计参考图
 ├── docs/
-│   ├── CLAUDE.md
-│   ├── DEV_LOG.md
-│   ├── REQUIREMENTS.md
-│   ├── TECH_STACK.md
-│   ├── DESIGN.md
-│   └── ROADMAP.md
-└── data/
-    └── (后续可能拆分)
+│   ├── DESIGN.md       # 系统设计
+│   ├── REQUIREMENTS.md # 需求
+│   ├── TECH_STACK.md   # 技术架构（本文件）
+│   ├── ROADMAP.md      # 路线图
+│   └── DEV_LOG.md      # 开发日志
+└── CLAUDE.md           # 项目指南
 ```
 
-## 响应式策略
+### Skills 依赖
 
-- 手机（< 768px）：单列布局，加大字号
-- 平板（768-1024px）：双列网格
-- 桌面（> 1024px）：三列宽屏展示
+| Skill | 位置 | 用途 |
+|-------|------|------|
+| ima-skill | ~/.claude/skills/ima-skill/ | 读取 IMA 笔记 |
+| weread-skills | ~/.claude/skills/weread-skills/ | 微信读书 API |

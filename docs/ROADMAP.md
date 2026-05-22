@@ -1,58 +1,43 @@
 # 执行路线图
 
-> 分阶段开发计划，每阶段完成后验证再继续
+## Phase 0：项目基础 ✅
 
-## Phase 1：基础面板上线
+- [x] 项目清理（极简骨架）
+- [x] 5 条开发约定
+- [x] Skill 安装（ima-skill、weread-skills、brainstorming）
+- [x] IMA DeepSeek 记录指令定稿
 
-**目标：** 像素风面板能打开、能看到数据。部署到 GitHub Pages，手机可访问。
+## Phase 1：系统设计 ✅
 
-| 步骤 | 内容 | 预计 |
-|------|------|------|
-| 1.1 | 创建 data.json（初始数据）+ index.html 骨架 | 本次 |
-| 1.2 | style.css 像素风全局样式 | 本次 |
-| 1.3 | main.js 数据加载 + 角色信息渲染 | 本次 |
-| 1.4 | radar-chart.js 七维雷达图 | 下次 |
-| 1.5 | pixel-map.js 书域地图 | 下次 |
-| 1.6 | boss-records.js Boss战记录模块 | 下次 |
-| 1.7 | GitHub Pages 部署 | 下次 |
+- [x] 核心循环（读 → 聊 → 结算 → 可视化）
+- [x] 等级体系（60 级 6 境）
+- [x] 七维能力（七道修炼，10 段位）
+- [x] Boss 链（小怪 → 章 Boss → 书 Boss）
+- [x] 复习触发（知识点追 + 铭刻）
+- [x] 修习统计（连续天数 + 总天数）
+- [x] IMA + 微信读书双源对接
+- [x] Claude 结算流程
+- [x] DESIGN.md 定稿
 
-**验证标准：** 浏览器打开 index.html 能看到完整面板，手机访问正常
+## Phase 2：页面可视化设计 ⬅️ 当前
 
----
+- [ ] 页面布局和模块设计
+- [ ] 视觉风格方向
+- [ ] 模块逐一确认
+- [ ] 设计 spec 定稿
 
-## Phase 2：数据同步打通
+## Phase 3：前端实施
 
-**目标：** "同步面板"指令能拉 IMA 数据、更新 data.json、推送 GitHub。
+- [ ] 按 spec 实现页面
+- [ ] data.json 按新系统重构
+- [ ] 部署 GitHub Pages
 
-| 步骤 | 内容 |
-|------|------|
-| 2.1 | 产出 IMA DeepSeek 指令文档 |
-| 2.2 | 实现读取 IMA API → 解析笔记 → 生成 data.json |
-| 2.3 | 打通"同步面板"指令流程 |
-| 2.4 | Boss战记录模块联调 |
+## Phase 4：数据管道
 
----
+- [ ] Claude 结算脚本（拉 API → 计算 → 写 data.json）
+- [ ] 首次同步验证
 
-## Phase 3：功能完善
+## Phase 5：迭代
 
-**目标：** 粒子效果、修习日历、动画打磨。
-
-| 步骤 | 内容 |
-|------|------|
-| 3.1 | 粒子效果背景 |
-| 3.2 | 修习日历（月度贡献图） |
-| 3.3 | 书架全景交互 |
-| 3.4 | 动画打磨 + 响应式优化 |
-
----
-
-## Skill 调用顺序
-
-```
-Phase 1 编码 → vibe-learning-cn
-Phase 1 前端确认 → frontend-design（如需）
-Phase 1 结束 → simplify（代码review）+ verification-before-completion
-Phase 2 → ima-skill
-各阶段结束 → requesting-code-review
-出bug → systematic-debugging
-```
+- [ ] 修习日历
+- [ ] 长期使用反馈优化
