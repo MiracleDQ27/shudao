@@ -49,11 +49,9 @@ function buildRadarSVG(dimensions) {
       <polygon points="${poly.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}"
         fill="none" stroke="rgba(180,150,100,0.05)" stroke-width="0.5"/>
     `).join('')}
-    ${[0,1,2].map(i => {
-      const p1 = points[i], p2 = points[i+3] || points[i-4];
-      return `<line x1="${p1.x}" y1="${p1.y}" x2="${p2.x}" y2="${p2.y}"
-        stroke="rgba(180,150,100,0.03)" stroke-width="0.5"/>`;
-    }).join('')}
+    ${points.map(p => `
+      <line x1="${cx}" y1="${cy}" x2="${p.x}" y2="${p.y}"
+        stroke="rgba(180,150,100,0.04)" stroke-width="0.5"/>`).join('')}
     <polygon points="${ptsStr}"
       fill="rgba(200,170,120,0.06)" stroke="rgba(200,170,120,0.2)" stroke-width="0.8"
       filter="url(#inkglow)"/>
@@ -61,13 +59,33 @@ function buildRadarSVG(dimensions) {
       fill="rgba(200,170,120,0.04)" stroke="rgba(200,170,120,0.35)" stroke-width="1.2"/>
     ${dataPoints.map((p, i) => `
       <circle cx="${p.x}" cy="${p.y}" r="2.5"
-        fill="${dimColors[dims[i]]}" opacity="0.4"/>
+        fill="${dimColors[dims[i]]}" opacity="0.4"
+        data-dim="${dims[i]}"/>
     `).join('')}
     ${points.map((p, i) => `
       <text x="${p.x}" y="${p.y + (i < 3 ? -6 : 7)}" text-anchor="middle"
         fill="rgba(200,170,120,0.35)" font-size="10" font-weight="300"
-        letter-spacing="2">${dims[i]}</text>
+        letter-spacing="2" data-dim="${dims[i]}">${dims[i]}</text>
     `).join('')}
     <circle cx="${cx}" cy="${cy}" r="1.5" fill="rgba(180,150,100,0.08)"/>
   </svg>`;
+}
+
+export function highlightDim(dimName) {
+  const svg = document.querySelector('.radar-svg');
+  if (!svg) return;
+  // 重置所有顶点
+  svg.querySelectorAll('circle[data-dim]').forEach(el => {
+    el.setAttribute('opacity', '0.4');
+    el.setAttribute('r', '2.5');
+  });
+  svg.querySelectorAll('text[data-dim]').forEach(el => {
+    el.setAttribute('fill', 'rgba(200,170,120,0.35)');
+  });
+  if (!dimName) return;
+  // 高亮选中维度
+  const circle = svg.querySelector(`circle[data-dim="${dimName}"]`);
+  const label = svg.querySelector(`text[data-dim="${dimName}"]`);
+  if (circle) { circle.setAttribute('opacity', '0.9'); circle.setAttribute('r', '4'); }
+  if (label) label.setAttribute('fill', 'rgba(200,170,120,0.8)');
 }

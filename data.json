@@ -41,12 +41,30 @@
   },
   "stats": {
     "streakDays": 1,
+    "longestStreak": 1,
     "totalDays": 103,
     "totalSessions": 0,
     "totalReadingMinutes": 3016,
     "lastActive": null
   },
-  "bossHistory": [],
+  "bossHistory": [
+    {
+      "type": "章Boss",
+      "bookTitle": "中国历代政治得失",
+      "bookId": "23523072",
+      "xp": 30,
+      "timestamp": "2026-05-22T15:04:29.859Z",
+      "noteId": "7463579733199491"
+    },
+    {
+      "type": "小怪",
+      "bookTitle": "中国历代政治得失",
+      "bookId": "23523072",
+      "xp": 20,
+      "timestamp": "2026-05-22T15:04:29.859Z",
+      "noteId": "7463579733199491"
+    }
+  ],
   "bookShelf": {
     "reading": [
       {

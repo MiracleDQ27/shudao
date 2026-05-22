@@ -1,10 +1,13 @@
-import { renderRadar } from './radar.js';
+import { renderRadar, highlightDim } from './radar.js';
 import { renderMap } from './map.js';
 import { renderCharacter, renderDimList, renderDungeon, renderInsights, renderStats } from './panels.js';
 
 async function init() {
   try {
-    const res = await fetch('data.json');
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+    const res = await fetch('data.json', { signal: controller.signal });
+    clearTimeout(timeout);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
     renderAll(data);
@@ -29,12 +32,27 @@ function renderAll(data) {
 
   document.getElementById('app').innerHTML = buildLayout(data, xpToNext, multiplier);
   renderCharacter(player, xpToNext);
-  renderDimList(dimensions);
+  renderDimList(dimensions, rules.dimensionTiers);
   renderRadar(dimensions);
-  renderMap(bookShelf, rules);
+  renderMap(bookShelf);
   renderDungeon(bossHistory);
   renderInsights(knowledgePoints);
   renderStats(stats, multiplier, player.totalXp);
+
+  // 灵根列表 → 雷达图联动
+  document.getElementById('panel-dimlist')?.addEventListener('click', (e) => {
+    const item = e.target.closest('.dim-item');
+    if (!item) return;
+    const dim = item.dataset.dim;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.dim-item.active').forEach(el => el.classList.remove('active'));
+    if (!wasActive) {
+      item.classList.add('active');
+      highlightDim(dim);
+    } else {
+      highlightDim(null);
+    }
+  });
 }
 
 function buildLayout(data, xpToNext, multiplier) {

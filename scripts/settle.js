@@ -22,16 +22,6 @@
 
 const DIFFICULTY = { 1: 0.7, 2: 1.0, 3: 1.3, 4: 1.6, 5: 2.0 };
 
-const STREAK_TIERS = [
-  { min: 1, max: 2, mult: 1.0 },
-  { min: 3, max: 6, mult: 1.2 },
-  { min: 7, max: 13, mult: 1.5 },
-  { min: 14, max: 29, mult: 2.0 },
-  { min: 30, max: 59, mult: 2.5 },
-  { min: 60, max: 99, mult: 3.0 },
-  { min: 100, max: Infinity, mult: 4.0 },
-];
-
 const BOSS_BASE_XP = { minion: 20, chapter: 30, book: 50 };
 const DIM_RATING_MULT = 3;       // 理解评分 × 3
 const SUB_DIM_RATIO = 0.3;       // 副维获得 30%
@@ -43,10 +33,12 @@ const VALID_DOMAINS = ['文道', '史道', '哲道', '政道', '世道', '心道
 //  工具函数
 // ===================================================================
 
-/** 连击加成倍率 */
-function getStreakMult(days) {
-  for (const t of STREAK_TIERS) {
-    if (days >= t.min && days <= t.max) return t.mult;
+/** 连击加成倍率 — 从 data.json 的 rules.streakBonuses 读取 */
+function getStreakMult(days, tiers) {
+  if (!tiers) return 1.0;
+  for (const t of tiers) {
+    const maxVal = t.maxDays ?? t.max ?? Infinity;
+    if (days >= (t.minDays ?? t.min ?? 0) && days <= maxVal) return t.multiplier ?? t.mult ?? 1.0;
   }
   return 1.0;
 }
@@ -153,7 +145,6 @@ function calcStreak(dailyReadTimes) {
   }
   if (readDates.size === 0) return 0;
 
-  const today = toDateStr(new Date());
   let streak = 0;
   const cursor = new Date();
   // 最多倒推 366 天
@@ -283,7 +274,7 @@ function runSettlement(session) {
 
   // ---- 连击 ----
   report.streakDays = calcStreak(weread?.annually?.dailyReadTimes);
-  const streakMult = getStreakMult(report.streakDays);
+  const streakMult = getStreakMult(report.streakDays, output.rules.streakBonuses);
 
   const wereadBooks = weread?.shelf?.books || [];
   const processedIds = new Set(output.processedNoteIds);
@@ -373,18 +364,42 @@ function runSettlement(session) {
       detail.bossXp.小怪 = Math.round(BOSS_BASE_XP.minion * diffMult * streakMult * ratingCoeff);
       noteXpTotal += detail.bossXp.小怪;
       report.bossesKilled.小怪++;
+      output.bossHistory.push({
+        type: '小怪',
+        bookTitle: parsed.bookName || shelfEntry?.title || '未知',
+        bookId: shelfEntry?.bookId || '',
+        xp: detail.bossXp.小怪,
+        timestamp: new Date().toISOString(),
+        noteId: imaNote.noteId,
+      });
     }
 
     if (chapterBoss) {
       detail.bossXp.章Boss = Math.round(BOSS_BASE_XP.chapter * diffMult * streakMult);
       noteXpTotal += detail.bossXp.章Boss;
       report.bossesKilled.章Boss++;
+      output.bossHistory.push({
+        type: '章Boss',
+        bookTitle: parsed.bookName || shelfEntry?.title || '未知',
+        bookId: shelfEntry?.bookId || '',
+        xp: detail.bossXp.章Boss,
+        timestamp: new Date().toISOString(),
+        noteId: imaNote.noteId,
+      });
     }
 
     if (bookBoss) {
       detail.bossXp.书Boss = Math.round(BOSS_BASE_XP.book * diffMult * streakMult);
       noteXpTotal += detail.bossXp.书Boss;
       report.bossesKilled.书Boss++;
+      output.bossHistory.push({
+        type: '书Boss',
+        bookTitle: parsed.bookName || shelfEntry?.title || '未知',
+        bookId: shelfEntry?.bookId || '',
+        xp: detail.bossXp.书Boss,
+        timestamp: new Date().toISOString(),
+        noteId: imaNote.noteId,
+      });
     }
 
     // 复习
@@ -435,6 +450,14 @@ function runSettlement(session) {
         const bossXp = Math.round(BOSS_BASE_XP.book * diffMult * streakMult);
         report.totalXpGained += bossXp;
         report.bossesKilled.书Boss++;
+        output.bossHistory.push({
+          type: '书Boss',
+          bookTitle: book.title || book.bookId,
+          bookId: book.bookId,
+          xp: bossXp,
+          timestamp: new Date().toISOString(),
+          noteId: null,
+        });
         report.warnings.push(`${book.title}: 无笔记但检测到读完，补发书Boss XP ${bossXp}`);
       }
 
@@ -489,6 +512,7 @@ function runSettlement(session) {
 
   // ---- 更新修习统计 ----
   output.stats.streakDays = report.streakDays;
+  output.stats.longestStreak = Math.max(output.stats.longestStreak || 0, report.streakDays);
   if (weread?.overall?.readDays && weread.overall.readDays > (output.stats.totalDays || 0)) {
     output.stats.totalDays = weread.overall.readDays;
   }

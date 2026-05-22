@@ -1,7 +1,21 @@
-export function renderMap(bookShelf, rules) {
+export function renderMap(bookShelf) {
   const el = document.getElementById('panel-map');
   if (!el) return;
   const total = (bookShelf.completed?.length || 0) + (bookShelf.reading?.length || 0) + (bookShelf.plan?.length || 0);
+
+  // 按主维统计书籍
+  const counts = {};
+  ['completed', 'reading'].forEach(cat => {
+    (bookShelf[cat] || []).forEach(book => {
+      const dim = book.mainDim;
+      if (dim) counts[dim] = (counts[dim] || 0) + 1;
+    });
+  });
+
+  const DOMAIN_POS = {
+    '文道': 105, '史道': 210, '哲道': 330, '政道': 450,
+    '世道': 560, '心道': 660, '器道': 760
+  };
 
   el.innerHTML = `
     <div class="section-title" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
@@ -44,6 +58,16 @@ export function renderMap(bookShelf, rules) {
         <text x="560" y="255" fill="rgba(136,200,168,0.2)" font-size="10" text-anchor="middle" letter-spacing="3">世道域</text>
         <text x="660" y="255" fill="rgba(216,184,168,0.2)" font-size="10" text-anchor="middle" letter-spacing="3">心道域</text>
         <text x="760" y="255" fill="rgba(168,216,200,0.2)" font-size="10" text-anchor="middle" letter-spacing="3">器道域</text>
+        ${Object.entries(counts).map(([dim, count]) => {
+          const x = DOMAIN_POS[dim];
+          if (!x) return '';
+          return `<g>
+            <circle cx="${x}" cy="278" r="4" fill="rgba(200,170,120,0.12)"
+              stroke="rgba(200,170,120,0.25)" stroke-width="0.5"/>
+            <text x="${x}" y="281" text-anchor="middle" fill="rgba(200,170,120,0.28)"
+              font-size="7" font-weight="300">${count}</text>
+          </g>`;
+        }).join('')}
         <circle cx="400" cy="220" r="5" fill="none" stroke="rgba(200,170,120,0.3)" stroke-width="1"/>
         <circle cx="400" cy="220" r="2" fill="rgba(200,170,120,0.2)"/>
         <circle cx="400" cy="180" r="120" fill="url(#inkwash)" opacity="0.3"/>
