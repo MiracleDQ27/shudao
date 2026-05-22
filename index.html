@@ -7,32 +7,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="app">加载中...</div>
-
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-    }
-  }
-  </script>
-
-  <script type="module">
-    fetch('data.json')
-      .then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-      .then(data => {
-        console.log('书道数据加载成功:', data);
-        document.getElementById('app').textContent =
-          `书道骨架就绪 · ${data.player.name} Lv.${data.player.level} ${data.player.title}`;
-      })
-      .catch(err => {
-        console.error('数据加载失败:', err);
-        document.getElementById('app').textContent = '数据加载失败: ' + err.message;
-      });
-  </script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
