@@ -29,8 +29,6 @@
 ## Phase 3：前端实施
 
 - [ ] 按 spec 实现页面
-- [ ] data.json 按新系统重构
-- [ ] 部署 GitHub Pages
 
 ## Phase 4：数据管道
 

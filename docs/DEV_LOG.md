@@ -199,3 +199,22 @@
 
 ### 当前状态
 漏洞清单 1-3 项已关闭。下一步：按新 Schema 重构 data.json。
+
+---
+
+## 2026-05-22（续2）— 会话延续 + 文档修复
+
+### 背景
+会话被 compact 后延续。用户指出文档更新滞后问题，需要主动驱动而非等提醒。
+
+### 修复内容
+- [x] REQUIREDMENTS.md：data.json 数据模型状态从"待重构" → "v2 已重构 ✅"
+- [x] ROADMAP.md：Phase 3 去掉已完成的 data.json 重构和 GitHub Pages 部署
+- [x] feedback memory 强化：从"知道规则"改为"主动驱动清单"
+
+### 当前状态
+data.json v2 重构完毕，3 个阻断漏洞关闭。待用户确认推进方向（推荐：推 origin → Phase 2 页面设计）。
+
+### 待完成
+- [ ] 推 origin（5 commits ahead）
+- [ ] Phase 2 页面可视化设计
