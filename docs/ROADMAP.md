@@ -26,7 +26,7 @@
 - [x] 配色/字体/交互/响应式策略
 - [x] VISUAL_DESIGN.md 定稿
 
-## Phase 3：前端实施 ⬅️ 当前
+## Phase 3：前端实施 ✅
 
 ### v2 全屏水墨画卷（当前版本）
 - [x] 全屏铺满布局，六层水墨远山背景 + 雾霭 + 绢本 grain
@@ -56,8 +56,9 @@
 - [x] NaN 保护（timestamp 排序容错）
 - [x] 移除 #loading 死样式
 
-### 待迭代
-- [ ] 手机竖屏适配
+### 待迭代（已清空）
+- [x] 手机竖屏适配
+- [x] 部署 GitHub Pages（https://miracledq27.github.io/shudao/）
 
 ## Phase 4：结算管道 ✅
 
